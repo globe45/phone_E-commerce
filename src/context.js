@@ -14,28 +14,36 @@ class ProductProvider  extends Component {
   }
   setProducts =() =>{
     let tempProducts=[];
-    storeProducts.forEach(item=> {
+    storeProducts.forEach(item => {
       const singleItem={...item};
-      tempProducts=[...tempProducts,singleItem];
+      tempProducts = [...tempProducts,singleItem];
     });
-  this.setState(()=>{
-    return{products:tempProducts };
+  this.setState(() => {
+    return{ products: tempProducts };
   });
 };
-  handleDetail= () =>{
-    console.log("hello from detail");
+getItem = id =>{
+  const product = this.state.products.find(item => item.id ===id);
+  return product;
+};    
+handleDetail= id => {
+    const product = this.getItem(id);
+    this.setState(()=>{
+      return {detailProduct:product};
+  });
   };
-  addToCart=(id) =>{
+  addToCart = id =>{
     console.log(`hello from add to cart is ${id}`);
   };
   render () {
       return(
         <ProductContext.Provider value={{
           ...this.state,
-          handleDetail:this.handleDetail,
-          addToCart:this.addToCart
+          handleDetail: this.handleDetail,
+          addToCart: this.addToCart
 
-        }}>
+        }}
+        >
         {this.props.children}
         </ProductContext.Provider>
 
