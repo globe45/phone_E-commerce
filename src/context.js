@@ -11,6 +11,10 @@ class ProductProvider  extends Component {
     cart: [],
     modalOpen:false,
     modalProduct:detailProduct,
+    cartSubTotal:0,
+    CartTax:0,
+    cartTotal:0
+
   };
   componentDidMount(){
     this.setProducts();
@@ -55,14 +59,26 @@ handleDetail= id => {
     this.setState(()=>{
       return {modalProduct:product,modalOpen:true}
     }
-  )
-  }
+  );
+};
   closeModel = () =>{
     this.setState(()=>{
       return {modalOpen:false}
     }
-  )
-  }
+  );
+};
+increment= (id) =>{
+
+}
+decrement= (id) =>{
+
+}
+removeItem= (id) =>{
+
+}
+clearCart=() =>{
+
+}
   render () {
       return(
         <ProductContext.Provider value={{
@@ -70,7 +86,11 @@ handleDetail= id => {
           handleDetail: this.handleDetail,
           addToCart: this.addToCart,
           openModal:this.openModal,
-          closeModel:this.closeModel
+          closeModel:this.closeModel,
+          increment:this.increment,
+          decrement:this.decrement,
+          removeItem:this.removeItem,
+          clearCart:this.clearCart
         }}
         >
         {this.props.children}

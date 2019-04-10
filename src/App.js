@@ -7,7 +7,7 @@ import ProductList from './Component/ProductList';
 
 
 import Details from './Component/Details';
-import Cart from './Component/Cart';
+import Cart from "./Component/Cart";
 import Default from './Component/Default';
 import Modal from './Component/Modal';
 
